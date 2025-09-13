@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Músicas</title>
+    <style>
+        body { font-family: Arial; background:#121212; color:#fff; text-align:center; padding:30px; }
+        input[type="text"] { padding:10px; width:300px; border-radius:5px; border:none; margin-right:10px; }
+        input[type="submit"], button { padding:10px 20px; border:none; border-radius:5px; background:#1db954; color:white; cursor:pointer; }
+        .musica { background:#1e1e1e; margin:15px auto; padding:15px; width:500px; border-radius:8px; text-align:left; }
+        .mensagem { margin-top:20px; color:#ff3c00; }
+        h2 { margin:0; }
+        .botao-salvas { margin-top: 30px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Busca de Músicas</h1>
+
+    <!-- Formulário de busca -->
+    <form method="get">
+        <input type="text" name="nome" placeholder="Digite o nome da música" required>
+        <input type="submit" value="Buscar">
+    </form>
+
+    <!-- Botão para ver músicas salvas -->
+    <div class="botao-salvas">
+        <a href="{% url 'musicas_salvas' %}">
+            <button type="button">Ver Músicas Salvas</button>
+        </a>
+    </div>
+
+    {% if mensagem %}
+        <p class="mensagem">{{ mensagem }}</p>
+    {% endif %}
+
+    {% if musicas %}
+        <h2 style="margin-top: 30px;">Resultados da Busca</h2>
+    {% endif %}
+
+    {% for musica in musicas %}
+        <div class="musica">
+            <h3>{{ musica.titulo }}</h3>
+            <p>Artista: {{ musica.artista }}</p>
+            <p>Álbum: {{ musica.album }}</p>
+            <p><a href="{{ musica.link }}" target="_blank" style="color:#1db954;">Ouvir no Deezer</a></p>
+            
+            <!-- Form para salvar música -->
+            <form action="{% url 'salvar_musica' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="titulo" value="{{ musica.titulo }}">
+                <input type="hidden" name="artista" value="{{ musica.artista }}">
+                <input type="hidden" name="album" value="{{ musica.album }}">
+                <input type="hidden" name="link" value="{{ musica.link }}">
+                <button type="submit">Salvar Música</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>

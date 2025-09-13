@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Músicas Salvas</title>
+    <style>
+        body { font-family: Arial; background:#121212; color:#fff; text-align:center; padding:30px; }
+        .musica { background:#1e1e1e; margin:15px auto; padding:15px; width:500px; border-radius:8px; text-align:left; }
+        a, a:visited { color:#1db954; }
+        .voltar-btn { margin-top: 30px; display: inline-block; padding: 10px 20px; background: #1db954; color: #fff; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Músicas Salvas</h1>
+
+    {% if favoritas %}
+        {% for fav in favoritas %}
+            <div class="musica">
+                <h3>{{ fav.titulo }} - {{ fav.artista }}</h3>
+                <p>Álbum: {{ fav.album }}</p>
+                <p><a href="{{ fav.link }}" target="_blank">Ouvir no Deezer</a></p>
+                <a href="{% url 'excluir_musica' fav.id %}" style="color:#ff3c00;">Excluir</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Nenhuma música salva ainda.</p>
+    {% endif %}
+
+    <a href="{% url 'musicas_home' %}" class="voltar-btn">Voltar para Busca</a>
+</body>
+</html>
