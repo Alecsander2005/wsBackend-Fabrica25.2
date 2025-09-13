@@ -1,20 +1,23 @@
-# ProjetoMusicas
+ProjetoMusicas
 
-Este é um projeto Django Para pesquisar suas musicas do dreezer e salvar em uma playlist para o banco de dados
----
+Este é um projeto Django para pesquisar músicas no Deezer, salvar em músicas favoritas e organizar em playlists no banco de dados.
 
-## Tecnologias e Dependências
+Tecnologias e Dependências
 
-- Python 3.13
-- Django 5.2.6
-- MySQL
-- PyMySQL 1.1.2
-- mysqlclient 2.2.7
-- Outras bibliotecas: requests, asgiref, certifi, charset-normalizer, idna, sqlparse, tzdata, urllib3
+Python 3.13
 
-O arquivo `requirements.txt` contém todas as versões usadas:
+Django 5.2.6
 
-```txt
+MySQL
+
+PyMySQL 1.1.2
+
+mysqlclient 2.2.7
+
+Outras bibliotecas: requests, asgiref, certifi, charset-normalizer, idna, sqlparse, tzdata, urllib3
+
+O arquivo requirements.txt contém todas as versões usadas:
+
 asgiref==3.9.1
 certifi==2025.8.3
 charset-normalizer==3.4.3
@@ -26,16 +29,16 @@ requests==2.32.5
 sqlparse==0.5.3
 tzdata==2025.2
 urllib3==2.5.0
+
+
 Para instalar todas as dependências:
 
-bash
-Copiar código
 pip install -r requirements.txt
+
 Configuração do Banco de Dados
+
 O projeto utiliza MySQL. Configure o settings.py do Django com os dados do seu banco:
 
-python
-Copiar código
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -47,42 +50,59 @@ DATABASES = {
     }
 }
 
- no create_db_if_not_exists.py add a sua senha do Banco De Dados:
 
-    B_NAME = 'projetomusicas'
-    USER = 'root'
-    PASSWORD = 'suasenha' 
-    HOST = 'localhost'
+No create_db_if_not_exists.py, adicione a sua senha do banco de dados:
 
-Caso queira que o banco seja criado automaticamente se não existir, você precisará criar um script externo em Python que conecte ao MySQ:
+B_NAME = 'projetomusicas'
+USER = 'root'
+PASSWORD = 'suasenha'
+HOST = 'localhost'
 
-Criando o Banco De Dados
+
+Caso queira que o banco seja criado automaticamente se não existir, você precisará criar um script externo em Python que conecte ao MySQL.
+
+Criando o Banco de Dados
 python create_db_if_not_exists.py
 
-
 Rodando o Projeto
-Clone o repositório
 
-Ative seu ambiente virtual
+Clone o repositório.
 
-Instale as dependências
+Ative seu ambiente virtual.
 
-Configure o banco de dados
+Instale as dependências (pip install -r requirements.txt).
+
+Configure o banco de dados no settings.py.
 
 Execute as migrações:
 
-bash
 python manage.py makemigrations
 python manage.py migrate
 
 
+Execute o servidor:
 
-bash
 python manage.py runserver
-Acesse em http://127.0.0.1:8000/.
+
+
+Acesse em http://127.0.0.1:8000/
+.
+
+Funcionalidades Adicionadas
+
+Busca de músicas no Deezer.
+
+Salvar músicas favoritas no banco.
+
+Criar, listar e visualizar playlists.
+
+Adicionar músicas às playlists direto da área de busca.
+
+Remover músicas das playlists.
+
+Templates estilizados de forma consistente usando base.html.
 
 Estrutura do Projeto
-bash
 ProjetoMusicas/
 │
 ├── ProjetoMusicas/       # Configurações do projeto Django
@@ -95,21 +115,33 @@ ProjetoMusicas/
 │   ├── views.py
 │   ├── urls.py
 │   └── templates/
+│       ├── base.html           # Template base
+│       ├── exibição_resultados/
+│       │   └── resultado.html
+│       ├── musicas/
+│       │   └── musicas_salvas.html
+│       └── playlists/
+│           ├── criar.html
+│           ├── detalhe.html
+│           └── lista.html
 │
 ├── manage.py
 └── requirements.txt
+
 Observações
-Certifique-se de que o MySQL está instalado e funcionando no seu computador.
+
+Certifique-se de que o MySQL está instalado e funcionando.
 
 Para rodar em outro computador, basta clonar o projeto, instalar as dependências e configurar o banco.
 
 Se estiver usando PyMySQL, adicione no __init__.py do projeto:
 
-python
-Copiar código
 import pymysql
 pymysql.install_as_MySQLdb()
+
+
 Isso garante compatibilidade com o Django.
 
 Autor
+
 Petrus

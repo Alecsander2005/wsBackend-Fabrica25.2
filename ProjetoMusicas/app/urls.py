@@ -3,10 +3,17 @@ from . import views
 
 urlpatterns = [
     path('', views.nome_musica, name='musicas_home'),
-    path('api/', views.nome_musica, name='nome_musica_api'),
-    path('salvar/', views.salvar_musica, name='salvar_musica'),
-    path('excluir/<int:musica_id>/', views.excluir_musica, name='excluir_musica'),
+    path('musicas-salvas/', views.musicas_salvas, name='musicas_salvas'),
+    path('salvar-musica/', views.salvar_musica, name='salvar_musica'),
+    path('excluir-musica/<int:musica_id>/', views.excluir_musica, name='excluir_musica'),
 
-    # ✅ Nova rota para visualizar as músicas salvas
-    path('salvas/', views.musicas_salvas, name='musicas_salvas'),
+    # Playlists
+    path('playlists/', views.listar_playlists, name='listar_playlists'),
+    path('playlists/criar/', views.criar_playlist, name='criar_playlist'),
+    path('playlists/<int:playlist_id>/', views.detalhes_playlist, name='detalhes_playlist'),
+    path('playlists/<int:playlist_id>/adicionar/<int:musica_id>/', views.adicionar_musica_playlist, name='adicionar_musica_playlist'),
+    path('playlists/<int:playlist_id>/remover/<int:musica_id>/', views.remover_musica_playlist, name='remover_musica_playlist'),
+
+    # Adicionar música direto da busca
+    path('adicionar-musica-busca/', views.adicionar_musica_busca, name='adicionar_musica_busca'),
 ]

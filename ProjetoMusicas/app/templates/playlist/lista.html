@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Minhas Playlists</h1>
+<a href="{% url 'criar_playlist' %}" class="button-link">Criar Nova Playlist</a>
+
+{% if playlists %}
+    <ul>
+    {% for playlist in playlists %}
+        <li>
+            <a href="{% url 'detalhes_playlist' playlist.id %}">{{ playlist.nome }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhuma playlist criada ainda.</p>
+{% endif %}
+
+<a href="{% url 'musicas_home' %}" class="button-link">Voltar para Busca</a>
+{% endblock %}

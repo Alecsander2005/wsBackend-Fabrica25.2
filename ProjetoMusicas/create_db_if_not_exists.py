@@ -2,7 +2,7 @@ import pymysql
 
 DB_NAME = 'projetomusicas'
 USER = 'root'
-PASSWORD = '2005' # sua senha aqui
+PASSWORD = '' # sua senha aqui
 HOST = 'localhost'
 
 # Conectar sem especificar banco

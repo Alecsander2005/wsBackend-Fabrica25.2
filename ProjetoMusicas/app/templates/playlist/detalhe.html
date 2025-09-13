@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Playlist: {{ playlist.nome }}</h1>
+
+<h2>Músicas na Playlist</h2>
+{% if playlist.musicas.all %}
+    <ul>
+    {% for item in playlist.musicas.all %}
+        <li>
+            {{ item.musica.titulo }} - {{ item.musica.artista }}
+            <a href="{% url 'remover_musica_playlist' playlist.id item.musica.id %}" class="button-link" style="background:#ff3c00;">Remover</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhuma música na playlist.</p>
+{% endif %}
+
+<h2>Adicionar Música</h2>
+{% if musicas_disponiveis %}
+    <ul>
+    {% for musica in musicas_disponiveis %}
+        <li>
+            {{ musica.titulo }} - {{ musica.artista }}
+            <a href="{% url 'adicionar_musica_playlist' playlist.id musica.id %}" class="button-link">Adicionar</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há músicas disponíveis para adicionar.</p>
+{% endif %}
+
+<a href="{% url 'listar_playlists' %}" class="button-link">Voltar</a>
+{% endblock %}

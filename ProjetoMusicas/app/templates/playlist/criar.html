@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Criar Nova Playlist</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="nome" placeholder="Nome da playlist" required>
+    <textarea name="descricao" placeholder="Descrição opcional"></textarea>
+    <button type="submit">Criar</button>
+</form>
+
+<a href="{% url 'listar_playlists' %}" class="button-link">Voltar</a>
+{% endblock %}

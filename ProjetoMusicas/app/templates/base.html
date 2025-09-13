@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Meu Projeto Musicas{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:#121212;
+            color:#fff;
+            padding: 20px; 
+            text-align: center;
+        }
+        input, select, button {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #1db954;
+            color: #fff;
+            cursor: pointer;
+        }
+        a {
+            color: #1db954;
+            text-decoration: none;
+        }
+        .musica {
+            background:#1e1e1e;
+            margin: 10px auto;
+            padding: 15px;
+            width: 500px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .mensagem {
+            color: #ff3c00;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
