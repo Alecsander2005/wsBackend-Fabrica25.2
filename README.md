@@ -39,13 +39,21 @@ Copiar código
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nome_do_banco',
+        'NAME': 'projetomusicas',
         'USER': 'root',
         'PASSWORD': 'sua_senha',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
+ no create_db_if_not_exists.py add a sua senha do Banco De Dados:
+
+    B_NAME = 'projetomusicas'
+    USER = 'root'
+    PASSWORD = 'suasenha' 
+    HOST = 'localhost'
+
 Caso queira que o banco seja criado automaticamente se não existir, você precisará criar um script externo em Python que conecte ao MySQ:
 
 Criando o Banco De Dados
