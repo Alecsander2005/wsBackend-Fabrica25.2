@@ -205,4 +205,4 @@ Inicie o servidor
 
 👤 Autor
 
-Desenvolvido por Petru
+Desenvolvido por Petrus
