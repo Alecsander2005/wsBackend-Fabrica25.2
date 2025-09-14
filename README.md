@@ -36,7 +36,7 @@ urllib3
 
 📄 Instalação de Dependências
 
-O arquivo requisitos.txt contém todas as bibliotecas necessárias:
+O arquivo requirements.txt contém todas as bibliotecas necessárias:
 
 asgiref==3.9.1
 certifi==2025.8.3
@@ -51,9 +51,9 @@ tzdata==2025.2
 urllib3==2.5.0
 
 
-Para instalar, execute:
+Para instalar todas as dependências:
 
-pip install -r requisitos.txt
+pip install -r requirements.txt
 
 🛠️ Configuração do Banco de Dados
 
@@ -92,23 +92,39 @@ git clone https://github.com/Alecsander2005/wsBackend-Fabrica25.2.git
 cd wsBackend-Fabrica25.2
 
 
-Crie e ative um ambiente virtual (opcional, mas recomendado):
+Crie e ative um ambiente virtual:
 
 python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Linux/macOS:
+
+
+No Windows (PowerShell):
+
+.\venv\Scripts\Activate.ps1
+
+
+Se der erro de permissão, execute no PowerShell como administrador:
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+No Windows (CMD):
+
+venv\Scripts\activate.bat
+
+
+No Linux/macOS:
+
 source venv/bin/activate
 
 
 Instale as dependências:
 
-pip install -r requisitos.txt
+pip install -r requirements.txt
 
 
 Configure o banco no settings.py.
 
-Adicione no __init__.py da pasta do projeto:
+Se usar PyMySQL, adicione este código no __init__.py do diretório principal do projeto:
 
 import pymysql
 pymysql.install_as_MySQLdb()
@@ -167,22 +183,26 @@ ProjetoMusicas/
 │
 ├── create_db_if_not_exists.py
 ├── manage.py
-└── requisitos.txt
+└── requirements.txt
 
 ⚠️ Observações
 
-Certifique-se de que o MySQL esteja instalado e funcionando corretamente.
+Certifique-se de que o MySQL esteja instalado e rodando corretamente.
 
-O projeto é compatível com mysqlclient e PyMySQL — ambos podem ser usados, mas se optar pelo PyMySQL, adicione o trecho de código no __init__.py como mostrado acima.
+O projeto é compatível com mysqlclient e PyMySQL.
 
-Para rodar em outro computador, basta:
+Para rodar em outro computador:
 
-Clonar o repositório
+Clone o projeto
 
-Instalar as dependências
+Instale as dependências
 
-Configurar o banco de dados
+Configure o banco
+
+Rode as migrações
+
+Inicie o servidor
 
 👤 Autor
 
-Desenvolvido por Petrus
+Desenvolvido por Petru
