@@ -1,8 +1,8 @@
-ProjetoMusicas
+🎵 ProjetoMúsicas
 
-Este é um projeto Django para pesquisar músicas no Deezer, salvar em músicas favoritas e organizar em playlists no banco de dados.
+Este é um projeto Django para pesquisar músicas usando a API do Deezer, salvar em músicas favoritas e organizar em playlists, tudo armazenado no banco de dados MySQL.
 
-Tecnologias e Dependências
+📦 Tecnologias e Dependências
 
 Python 3.13
 
@@ -10,138 +10,136 @@ Django 5.2.6
 
 MySQL
 
+Conectores MySQL:
+
 PyMySQL 1.1.2
 
-mysqlclient 2.2.7
+cliente mysql 2.2.7
 
-Outras bibliotecas: requests, asgiref, certifi, charset-normalizer, idna, sqlparse, tzdata, urllib3
+Bibliotecas adicionais:
 
-O arquivo requirements.txt contém todas as versões usadas:
+solicitações
 
-asgiref==3.9.1
-certifi==2025.8.3
-charset-normalizer==3.4.3
-Django==5.2.6
-idna==3.10
-mysqlclient==2.2.7
-PyMySQL==1.1.2
-requests==2.32.5
-sqlparse==0.5.3
-tzdata==2025.2
-urllib3==2.5.0
+asgiref
 
+certificado
+
+normalizador de conjunto de caracteres
+
+idna
+
+sqlparse
+
+tzdata
+
+urllib3
+
+📄 Instalação de Dependências
+
+O arquivo requisitos.txt contém todas as bibliotecas permitidas:
+
+asgiref==3.9.1 certifi==2025.8.3 charset-normalizer==3.4.3 Django==5.2.6 idna==3.10 mysqlclient==2.2.7 PyMySQL==1.1.2 requests==2.32.5 sqlparse==0.5.3 tzdata==2025.2 urllib3==2.5.0
 
 Para instalar todas as dependências:
 
-pip install -r requirements.txt
+pip install -r requisitos.txt
 
-Configuração do Banco de Dados
+🛠️ Configuração do Banco de Dados
 
-O projeto utiliza MySQL. Configure o settings.py do Django com os dados do seu banco:
+Edite o arquivo ProjetoMusicas/settings.py:
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'projetomusicas',
-        'USER': 'root',
-        'PASSWORD': 'sua_senha',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+BANCOS DE DADOS = { 'padrão': { 'MECANISMO': 'django.db.backends.mysql', 'NOME': 'projetomusicas', 'USUÁRIO': 'root', 'SENHA': 'sua_senha', 'HOST': 'localhost', 'PORTA': '3306', } }
 
+🐍 Script para criar o banco automaticamente
 
-No create_db_if_not_exists.py, adicione a sua senha do banco de dados:
+No arquivo create_db_if_not_exists.py, configure:
 
-B_NAME = 'projetomusicas'
-USER = 'root'
-PASSWORD = 'suasenha'
-HOST = 'localhost'
+B_NAME = 'projetomusicas' USER = 'root' SENHA = 'sua_senha' HOST = 'localhost'
 
+Para criar o banco automaticamente (caso não existe):
 
-Caso queira que o banco seja criado automaticamente se não existir, você precisará criar um script externo em Python que conecte ao MySQL.
-
-Criando o Banco de Dados
 python create_db_if_not_exists.py
 
-Rodando o Projeto
+▶️Executando o Projeto
 
-Clone o repositório.
+Clone ou repositório:
 
-Ative seu ambiente virtual.
+clone do git https://github.com/Alecsander2005/wsBackend-Fabrica25.2.git cd wsBackend-Fabrica25.2
 
-Instale as dependências (pip install -r requirements.txt).
+Crie e ative um ambiente virtual:
 
-Configure o banco de dados no settings.py.
+python -m venv venv
 
-Execute as migrações:
+Sem Windows (PowerShell):
 
-python manage.py makemigrations
-python manage.py migrate
+.\venv\Scripts\Ativar.ps1
 
+Se houver erro de permissão, execute no PowerShell como administrador:
 
-Execute o servidor:
+Set-ExecutionPolicy RemoteSigned -Scope UsuárioAtual
+
+Sem Windows (CMD):
+
+venv\Scripts\ativar.bat
+
+Sem Linux/macOS:
+
+fonte venv/bin/ativar
+
+Instalar as dependências:
+
+pip install -r requisitos.txt
+
+Configure o banco no settings.py.
+
+Se usar PyMySQL, adicione este código no init .py do diretório principal do projeto:
+
+importar pymysql pymysql.install_as_MySQLdb()
+
+Executar as migrações:
+
+python manage.py makemigrations python manage.py migrar
+
+Início ou servidor:
 
 python manage.py runserver
 
+Acesse: http://127.0.0.1:8000/
 
-Acesse em http://127.0.0.1:8000/
-.
+✅ Funcionalidades
 
-Funcionalidades Adicionadas
+🔍 Buscar músicas pela API do Deezer
 
-Busca de músicas no Deezer.
+⭐ Salvar músicas favoritas
 
-Salvar músicas favoritas no banco.
+🎵 Criar e gerenciar playlists
 
-Criar, listar e visualizar playlists.
+➕ Adicionar músicas às playlists diretamente da busca
 
-Adicionar músicas às playlists direto da área de busca.
+❌ Remover músicas das playlists
 
-Remover músicas das playlists.
+💅 Templates organizados com base.html
 
-Templates estilizados de forma consistente usando base.html.
+🗂️ Estrutura do Projeto Projeto Músicas/ │ ├── Projeto Músicas/ # Configurações do projeto Django │ ├── init .py │ ├── settings.py │ ├── urls.py │ └── wsgi.py │ ├── app/ # App principal │ ├── models.py │ ├── views.py │ ├── urls.py │ └── templates/ │ ├── base.html │ ├── exibição_resultados/ │ │ └── resultado.html │ ├── musicas/ │ │ └── musicas_salvas.html │ └── playlists/ │ ├── criar.html │ ├── detalhe.html │ └── lista.html │ ├── create_db_if_not_exists.py ├── manage.py └── requisitos.txt
 
-Estrutura do Projeto
-ProjetoMusicas/
-│
-├── ProjetoMusicas/       # Configurações do projeto Django
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── app/                  # Aplicativo principal
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   └── templates/
-│       ├── base.html           # Template base
-│       ├── exibição_resultados/
-│       │   └── resultado.html
-│       ├── musicas/
-│       │   └── musicas_salvas.html
-│       └── playlists/
-│           ├── criar.html
-│           ├── detalhe.html
-│           └── lista.html
-│
-├── manage.py
-└── requirements.txt
+⚠️Observações
 
-Observações
+Certifique-se de que o MySQL esteja instalado e rodando corretamente.
 
-Certifique-se de que o MySQL está instalado e funcionando.
+O projeto é compatível com mysqlclient e PyMySQL.
 
-Para rodar em outro computador, basta clonar o projeto, instalar as dependências e configurar o banco.
+Para rodar em outro computador:
 
-Se estiver usando PyMySQL, adicione no __init__.py do projeto:
+Clonar o projeto
 
-import pymysql
-pymysql.install_as_MySQLdb()
+Instalar as dependências
 
+Configurar o banco
 
-Isso garante compatibilidade com o Django.
+Cavalgamos como migrações
 
-Autor
+Iniciar ou servidor
 
-Petrus
+👤 Autor
+
+Desenvolvido por Petru
